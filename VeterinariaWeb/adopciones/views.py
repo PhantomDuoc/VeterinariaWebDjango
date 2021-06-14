@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import enAdopcion
 from .forms import AdopcionForm
 
@@ -39,3 +39,24 @@ def form_adopcion(request):
             formulario.save()
             datos['mensaje'] = 'Guardado correctamente'
     return render(request,'adopciones/form_adopciones.html', datos)
+
+def form_mod_adopcion(request, id):
+    mascota = enAdopcion.objects.get(idRescatado=id)
+
+    datos = {
+        'form':AdopcionForm(instance=mascota)
+    }
+
+    if(request.method == 'POST'):
+        formulario = AdopcionForm(data=request.POST, instance=mascota)
+        if formulario.is_valid():
+            formulario.save()
+            datos['mensaje'] = 'Modificado correctamente'
+
+    return render(request, 'adopciones/form_mod_adopciones.html', datos)
+
+def form_del_adopcion(request, id):
+    mascota = enAdopcion.object.get(idRescatado=id)
+    mascota.delete()
+
+    return redirect(to='home')

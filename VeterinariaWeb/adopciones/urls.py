@@ -6,5 +6,7 @@ urlpatterns = [
     path('contacto', contacto, name="contacto"),
     path('conocenos', conocenos, name="conocenos"),
     path('adopciones', adopciones, name="adopciones"),
-    path('form_adopcion', form_adopcion, name="form_adopcion")
+    path('agregar-adopcion', form_adopcion, name="form_adopciones"),
+    path('modificar-adopcion/<id>', form_mod_adopcion, name="form_mod_adopciones"),
+    path('eliminar-adopcion', form_del_adopcion, name="form_del_adopciones")
 ]
