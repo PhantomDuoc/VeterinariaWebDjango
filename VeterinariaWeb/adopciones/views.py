@@ -38,4 +38,4 @@ def form_adopcion(request):
         if formulario.is_valid():
             formulario.save()
             datos['mensaje'] = 'Guardado correctamente'
-    return render(request,'adopciones/form_adopciones', datos)
+    return render(request,'adopciones/form_adopciones.html', datos)
