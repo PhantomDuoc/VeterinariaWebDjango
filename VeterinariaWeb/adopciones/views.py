@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import enAdopcion
 
 class Persona:
     def __init__(self, nombre, edad):
@@ -8,9 +9,11 @@ class Persona:
 
 # Create your views here.
 def home(request):
-    lista = ["Lasagna","Charqui", "Porotos"]
-    context = {"nombre":"Hugo Cerda","comidas":lista}
-    return render(request, 'adopciones/index.html',context)
+    mascotas = enAdopcion.objects.all()
+    context = {
+        'enAdopcion':mascotas
+    }
+    return render(request, 'adopciones/index.html', context)
 
 def contacto(request):
     return render(request, 'adopciones/contacto.html')
@@ -19,5 +22,9 @@ def conocenos(request):
     return render(request, 'adopciones/conocenos.html')
 
 def adopciones(request):
-    return render(request, 'adopciones/adopciones.html')
+    mascotas = enAdopcion.objects.all()
+    context = {
+        'enAdopcion':mascotas
+    }
+    return render(request, 'adopciones/adopciones.html', context)
 
