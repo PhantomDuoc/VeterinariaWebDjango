@@ -19,10 +19,10 @@
         </div>
         <div class="main-header__contactInfo column ">
             <p class="main-header__contactInfo__phone">
-                <span class="icon-phone"><img src="icons/icon-phone.png" alt="" class="icon-phone">+569 1234 5678</span>
+                <span class="icon-phone"><img src="{% static 'adopciones/icons/icon-phone.png'%}" alt="" class="icon-phone">+569 1234 5678</span>
             </p>
             <p class="main-header__contactInfo__address">
-                <span class="icon-location"><img src="icons/icon-location.png" alt=""> Libertad #666 - Valparaíso, Chile</span>
+                <span class="icon-location"><img src="{% static 'adopciones/icons/icon-location.png'%}" alt=""> Libertad #666 - Valparaíso, Chile</span>
             </p>
         </div>
     </header>
@@ -30,32 +30,32 @@
     <nav class="main-nav">
         <div class="container container--flex">
             <span class="icon-menu" id="btn-menu">
-                <img src="icons/icon-menu.png" alt="">
+                <img src="{% static 'adopciones/icons/icon-menu.png'%}" alt="">
             </span>
             <ul class="menu" id="menu">
                 <li class="menu__item">
                     <a href="/" class="menu__link">Inicio</a>
                 </li>
                 <li class="menu__item">
-                    <a href="adopciones.html" class="menu__link">Adopciones</a>
+                    <a href="{% url 'adopciones'%}" class="menu__link">Adopciones</a>
                 </li>
                 <li class="menu__item">
-                    <a href="conocenos.html" class="menu__link menu__link--select">Conócenos</a>
+                    <a href="{% url 'conocenos'%}" class="menu__link menu__link--select">Conócenos</a>
                 </li>
                 <li class="menu__item">
-                    <a href="contacto.html" class="menu__link">Contacto</a>
+                    <a href="{% url 'contacto'%}" class="menu__link">Contacto</a>
                 </li>
             </ul>
             <div class="social-icon">
-                <a href="" class="social-icon__link"><span class="icon"><img src="icons/icon-facebook.png" alt=""></span></a>
-                <a href="" class="social-icon__link"><span class="icon"><img src="icons/icon-twitter.png" alt=""></span></a>
-                <a href="" class="social-icon__link"><span class="icon"><img src="icons/icon-mail.png" alt=""></span></a>
+                <a href="" class="social-icon__link"><span class="icon"><img src="{% static 'adopciones/icons/icon-facebook.png'%}" alt=""></span></a>
+                <a href="" class="social-icon__link"><span class="icon"><img src="{% static 'adopciones/icons/icon-twitter.png'%}" alt=""></span></a>
+                <a href="" class="social-icon__link"><span class="icon"><img src="{% static 'adopciones/icons/icon-mail.png'%}" alt=""></span></a>
             </div>
         </div>
     </nav>
 
     <section class="banner">
-        <img src="img/banner.jpg" alt="" class="banner__img">
+        <img src="{% static 'adopciones/img/banner.jpg'%}" alt="" class="banner__img">
         <div class="banner__content">Tus mascotas en las mejores manos</div>
     </section>
 
@@ -72,17 +72,17 @@
             <div class="container container--flex">
                 <div class="column column--33">
                     <h3 class="our-team__title">Alexis</h3>
-                    <img src="img/vet1.jpg" alt="" class="our-team__img">
+                    <img src="{% static 'adopciones/img/vet1.jpg'%}" alt="" class="our-team__img">
                     <p class="our-team__txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. At amet perferendis dignissimos quisquam deserunt dolorum debitis delectus excepturi quibusdam. Neque officiis tenetur impedit quam labore incidunt perspiciatis minima nisi nihil.</p>
                 </div>
                 <div class="column column--33">
                     <h3 class="our-team__title">Alanis</h3>
-                    <img src="img/vet2.jpg" alt="" class="our-team__img">
+                    <img src="{% static 'adopciones/img/vet2.jpg'%}" alt="" class="our-team__img">
                     <p class="our-team__txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. At amet perferendis dignissimos quisquam deserunt dolorum debitis delectus excepturi quibusdam. Neque officiis tenetur impedit quam labore incidunt perspiciatis minima nisi nihil.</p>
                 </div>
                 <div class="column column--33">
                     <h3 class="our-team__title">Julio</h3>
-                    <img src="img/vet3.jpg" alt="" class="our-team__img">
+                    <img src="{% static 'adopciones/img/vet3.jpg'%}" alt="" class="our-team__img">
                     <p class="our-team__txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. At amet perferendis dignissimos quisquam deserunt dolorum debitis delectus excepturi quibusdam. Neque officiis tenetur impedit quam labore incidunt perspiciatis minima nisi nihil.</p>
                 </div>
             </div>
@@ -105,20 +105,20 @@
             <div class="column column--33">
                 <h2 class="column__title">Síguenos en nuestras redes sociales</h2>
                 <p class="column__txt">
-                    <a href="" class="icon-facebook"><img src="icons/icon-facebook.png" alt="">Facebook</a>
+                    <a href="" class="icon-facebook"><img src="{% static 'adopciones/icons/icon-facebook.png'%}" alt="">Facebook</a>
                 </p>
                 <p class="column__txt">
-                    <a href="" class="icon-twitter"><img src="icons/icon-twitter.png" alt="">Síguenos en Twitter</a>
+                    <a href="" class="icon-twitter"><img src="{% static 'adopciones/icons/icon-twitter.png'%}" alt="">Síguenos en Twitter</a>
                 </p>
                 <p class="column__txt">
-                    <a href="" class="icon-youtube"><img src="icons/icon-youtube.png" alt="">Visita nuestro canal</a>
+                    <a href="" class="icon-youtube"><img src="{% static 'adopciones/icons/icon-youtube.png'%}" alt="">Visita nuestro canal</a>
                 </p>
             </div>
             <p class="copy">&copy; 2021 Veterinaria Cola | Todos los derechos reservados</p>
         </div>
     </footer>
-    <script src="js/menu.js"></script>
-    <script src="js/mapa.js"></script>
+    <script src="{% static 'adopciones/js/menu.js'%}"></script>
+    <script src="{% static 'adopciones/js/mapa.js'%}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap"></script>
 </body>
 
