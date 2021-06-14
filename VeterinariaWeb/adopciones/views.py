@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import enAdopcion
+from .forms import AdopcionForm
 
 class Persona:
     def __init__(self, nombre, edad):
@@ -28,3 +29,13 @@ def adopciones(request):
     }
     return render(request, 'adopciones/adopciones.html', context)
 
+def form_adopcion(request):
+    datos = {
+        'form':AdopcionForm
+    }
+    if(request.method == 'POST'):
+        formulario = AdopcionForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            datos['mensaje'] = 'Guardado correctamente'
+    return render(request,'adopciones/form_adopciones', datos)
