@@ -56,7 +56,7 @@ def form_mod_adopcion(request, id):
     return render(request, 'adopciones/form_mod_adopciones.html', datos)
 
 def form_del_adopcion(request, id):
-    mascota = enAdopcion.object.get(idRescatado=id)
+    mascota = enAdopcion.objects.get(idRescatado=id)
     mascota.delete()
 
     return redirect(to='home')
