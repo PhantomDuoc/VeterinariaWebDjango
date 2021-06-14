@@ -5,4 +5,5 @@ urlpatterns = [
     path('', home, name="home"),
     path('', contact, name="contact"),
     path('', conocenos, name="conocenos"),
+    path('', adopciones, name="adopciones"),
 ]
