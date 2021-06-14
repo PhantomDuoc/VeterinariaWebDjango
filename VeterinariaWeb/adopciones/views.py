@@ -11,10 +11,11 @@ class Persona:
 # Create your views here.
 def home(request):
     mascotas = enAdopcion.objects.all()
-    context = {
-        'enAdopcion':mascotas
+    datos = {
+        'enAdopcion':mascotas,
+        'form':AdopcionForm()
     }
-    return render(request, 'adopciones/index.html', context)
+    return render(request, 'adopciones/index.html', datos)
 
 def contacto(request):
     return render(request, 'adopciones/contacto.html')
@@ -24,14 +25,14 @@ def conocenos(request):
 
 def adopciones(request):
     mascotas = enAdopcion.objects.all()
-    context = {
+    datos = {
         'enAdopcion':mascotas
     }
-    return render(request, 'adopciones/adopciones.html', context)
+    return render(request, 'adopciones/adopciones.html', datos)
 
 def form_adopcion(request):
     datos = {
-        'form':AdopcionForm
+        'form':AdopcionForm()
     }
     if(request.method == 'POST'):
         formulario = AdopcionForm(request.POST)
