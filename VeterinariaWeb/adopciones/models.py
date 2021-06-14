@@ -12,10 +12,13 @@ class EstadoAdopcion(models.Model):
 
 class enAdopcion(models.Model):
     idRescatado = models.IntegerField(primary_key=True, verbose_name='ID del animal rescatado dado en adopcion')
-    nombre = models.CharField(max_length=50, verbose_name='Nombre')
-    especie = models.CharField(max_length=50, verbose_name='Especie del animal')
-    raza = models.CharField(max_length=50, verbose_name='Raza del animal')
+    nombre = models.CharField(max_length=50, verbose_name='Nombre', default='Sin nombre')
+    especie = models.CharField(max_length=50, verbose_name='Especie', default='Sin especie')
+    raza = models.CharField(max_length=50, verbose_name='Raza', default='Sin raza')
+    descripcion = models.CharField(max_length=50, verbose_name='Descripcion', default='Sin descripcion')
+    edad = models.CharField(max_length=2, verbose_name='Edad', default='Sin edad')
     estado = models.ForeignKey(EstadoAdopcion, on_delete=models.CASCADE)
+    
 
     def __str__(self):
         return self.idUsuario, self.nombreUsuario
