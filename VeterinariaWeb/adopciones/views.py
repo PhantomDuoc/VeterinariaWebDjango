@@ -20,6 +20,9 @@ def home(request):
 def contacto(request):
     return render(request, 'adopciones/contacto.html')
 
+def dashboard(request):
+    return render(request, 'adopciones/dashboard.html')
+
 def conocenos(request):
     return render(request, 'adopciones/conocenos.html')
 

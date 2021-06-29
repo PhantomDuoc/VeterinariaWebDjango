@@ -1,0 +1,184 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=yes, maximum-scale=3.0, minimum-scale=1.0">
+    <title>Veterinaria Cola</title>
+    <link rel="stylesheet" href="{% static 'adopciones/css/style.css'%}">
+    <link rel="shortcut icon" href="{% static 'adopciones/icons/icon.png'%}">
+    <link rel="stylesheet" href="{% static 'adopciones/css/dashboard.css'%}">
+    <!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="css/util.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="container container--flex">
+            <h1 class="logo">Veterinaria Cola</h1>
+        </div>
+        <div class="main-header__contactInfo column ">
+            <p class="main-header__contactInfo__phone">
+                <span class="icon-phone">
+                    <img src="{% static 'adopciones/icons/icon-phone.png'%}" alt="" class="icon-phone">+569 1234 5678
+                </span>
+            </p>
+            <p class="main-header__contactInfo__address">
+                <span class="icon-location">
+                    <img src="{% static 'adopciones/icons/icon-location.png'%}" alt=""> Libertad #666 - Valparaíso, Chile
+                </span>
+            </p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container container--flex">
+            <span class="icon-menu" id="btn-menu">
+                <img src="{% static 'adopciones/icons/icon-menu.png'%}" alt="">
+            </span>
+            <ul class="menu" id="menu">
+                <li class="menu__item">
+                    <a href="/" class="menu__link menu__link--select">Inicio</a>
+                </li>
+                <li class="menu__item">
+                    <a href="{% url 'adopciones'%}" class="menu__link">Adopciones</a>
+                </li>
+                <li class="menu__item">
+                    <a href="{% url 'conocenos'%}" class="menu__link">Conócenos</a>
+                </li>
+                <li class="menu__item">
+                    <a href="{% url 'contacto'%}" class="menu__link">Contacto</a>
+                </li>
+            </ul>
+            <div class="social-icon">
+                <a href="" class="social-icon__link">
+                    <span class="icon">
+                        <img src="{% static 'adopciones/icons/icon-facebook.png'%}" alt="">
+                    </span>
+                </a>
+                <a href="" class="social-icon__link">
+                    <span class="icon">
+                        <img src="{% static 'adopciones/icons/icon-twitter.png'%}" alt="">
+                    </span>
+                </a>
+                <a href="" class="social-icon__link">
+                    <span class="icon">
+                        <img src="{% static 'adopciones/icons/icon-mail.png'%}" alt="">
+                    </span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="banner">
+        <img src="{% static 'adopciones/img/banner.jpg'%}" alt="" class="banner__img">
+        <div class="banner__content">Tus mascotas en las mejores manos</div>
+    </section>
+
+    <main>
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100 p-t-85 p-b-20">
+                    <form class="login100-form validate-form">
+                        <span class="login100-form-title p-b-70">
+                            Welcome
+                        </span>
+                        <span class="login100-form-avatar">
+                            <img src="images/avatar-01.jpg" alt="AVATAR">
+                        </span>
+    
+                        <div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter username">
+                            <input class="input100" type="text" name="username">
+                            <span class="focus-input100" data-placeholder="Username"></span>
+                        </div>
+    
+                        <div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
+                            <input class="input100" type="password" name="pass">
+                            <span class="focus-input100" data-placeholder="Password"></span>
+                        </div>
+    
+                        <div class="container-login100-form-btn">
+                            <button class="login100-form-btn">
+                                Login
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    
+        <div id="dropDownSelect1"></div>
+    </main>
+
+
+    <footer class="main-footer">
+        <div class="container container--flex">
+            <div class="column column--33">
+                <h2 class="column__title">¿Por qué visitarnos?</h2>
+                <p class="column__txt">Porqué cuidaremos a tus mascotas como si fueran nuestras, contamos con una amplia variedad de profesionales para brindar la mejor atención</p>
+            </div>
+            <div class="column column--33">
+                <h2 class="column__title">Contáctanos</h2>
+                <p class="column__txt">Libertad #666 - Valparaíso, Chile</p>
+                <p class="column__txt">Teléfono: +569 1234 5678</p>
+                <p class="column__txt">consultas@veterinariacola.com</p>
+            </div>
+            <div class="column column--33">
+                <h2 class="column__title">Síguenos en nuestras redes sociales</h2>
+                <p class="column__txt">
+                    <a href="" class="icon-facebook"><img src="{% static 'adopciones/icons/icon-facebook.png'%}" alt="">Facebook</a>
+                </p>
+                <p class="column__txt">
+                    <a href="" class="icon-twitter"><img src="{% static 'adopciones/icons/icon-twitter.png'%}" alt="">Síguenos en Twitter</a>
+                </p>
+                <p class="column__txt">
+                    <a href="" class="icon-youtube"><img src="{% static 'adopciones/icons/icon-youtube.png'%}" alt="">Visita nuestro canal</a>
+                </p>
+            </div>
+            <p class="copy">&copy; 2021 Veterinaria Cola | Todos los derechos reservados</p>
+            <a href="{% url 'dashboard' %}" class="dashboard">Dashboard</a>
+        </div>
+    </footer>
+    <script src="{% static 'adopciones/js/menu.js'%}"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+        <script src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+        <script src="vendor/bootstrap/js/popper.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+        <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+        <script src="vendor/daterangepicker/moment.min.js"></script>
+        <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+        <script src="vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+        <script src="js/main.js"></script>
+</body>
+
+</html>

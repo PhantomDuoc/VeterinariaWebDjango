@@ -8,6 +8,12 @@ body {
     margin: 0;
 }
 
+.dashboard {
+    text-decoration: none;
+    text-align: right;
+    margin: auto;
+}
+
 
 /*------------------------------------------------Estilos base------------------------------------------------*/
 
