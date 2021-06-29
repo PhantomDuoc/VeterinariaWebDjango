@@ -8,12 +8,6 @@ body {
     margin: 0;
 }
 
-.dashboard {
-    text-decoration: none;
-    text-align: right;
-    margin: auto;
-}
-
 
 /*------------------------------------------------Estilos base------------------------------------------------*/
 
@@ -325,17 +319,11 @@ h6 {
     margin-top: 5px;
 }
 
-
-/*------------------------------------------------Estilos formulario------------------------------------------------*/
-
-label,
-legend {
-    font-family: 'Pacifico', cursive;
-    margin: 0;
-}
-
-legend {
-    color: #de423a;
+#dashboard {
+    text-decoration: none;
+    text-align: right;
+    margin: auto;
+    color: white;
 }
 
 
