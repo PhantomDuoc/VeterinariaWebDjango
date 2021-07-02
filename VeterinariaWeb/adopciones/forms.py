@@ -6,4 +6,4 @@ from .models import enAdopcion
 class AdopcionForm(ModelForm):
     class Meta:
         model = enAdopcion
-        fields = ['idRescatado','nombre','especie','raza','descripcion','edad','estado_id']
+        fields = ['idRescatado','nombre','especie','raza','descripcion','edad','estado_id','imagen']

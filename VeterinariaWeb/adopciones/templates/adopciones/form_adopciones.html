@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,12 +10,13 @@
     <title>Agregar Adopción | Veterinaria Cola</title>
     <link rel="stylesheet" href="{% static 'adopciones/css/style.css'%}">
     <link rel="shortcut icon" href="{% static 'adopciones/icons/icon.png'%}">
+    <link rel="stylesheet" href="{% static 'adopciones/css/contacto.css'%}">
     <link rel="stylesheet" type="text/css" href="{% static 'adopciones/css/bootstrap.min.css'%}">
 </head>
 
 <body>
     <div class="container container--flex">
-        <form method="post" action="" id="formulario">
+        <form method="post" action="" id="formulario" class="formulario column column--50">
             {% csrf_token %}
             <div class="form_group">
                 {{ form.as_table }}
@@ -27,6 +29,8 @@
             <a href="/" class="menu__link menu__link--select">Inicio</a>
         </form>
     </div>
+
+
 
 
 

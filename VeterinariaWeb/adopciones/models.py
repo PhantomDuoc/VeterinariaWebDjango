@@ -18,7 +18,7 @@ class enAdopcion(models.Model):
     descripcion = models.CharField(max_length=50, verbose_name='Descripcion', default='Sin descripcion')
     edad = models.CharField(max_length=2, verbose_name='Edad', default='Sin edad')
     estado_id = models.ForeignKey(EstadoAdopcion, on_delete=models.CASCADE)
-    
+    imagen = models.ImageField(upload_to="adopciones", null=True)
 
     def __str__(self):
         return self.nombre
