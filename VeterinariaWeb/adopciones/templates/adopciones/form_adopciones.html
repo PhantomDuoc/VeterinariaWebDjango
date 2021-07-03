@@ -16,7 +16,7 @@
 
 <body>
     <div class="container container--flex">
-        <form method="post" action="" id="formulario" class="formulario column column--50">
+        <form method="post" action="" id="formulario" class="formulario column column--50" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form_group">
                 {{ form.as_table }}

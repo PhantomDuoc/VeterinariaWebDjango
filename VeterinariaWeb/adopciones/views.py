@@ -21,7 +21,12 @@ def contacto(request):
     return render(request, 'adopciones/contacto.html')
 
 def dashboard(request):
-    return render(request, 'adopciones/dashboard.html')
+    mascotas = enAdopcion.objects.all()
+    datos = {
+        'enAdopcion':mascotas,
+        'form':AdopcionForm()
+    }
+    return render(request, 'adopciones/dashboard.html', datos)
 
 def conocenos(request):
     return render(request, 'adopciones/conocenos.html')
@@ -38,7 +43,7 @@ def form_adopcion(request):
         'form':AdopcionForm()
     }
     if(request.method == 'POST'):
-        formulario = AdopcionForm(request.POST)
+        formulario = AdopcionForm(request.POST, request.FILES)
         if formulario.is_valid():
             formulario.save()
             datos['mensaje'] = 'Guardado correctamente'

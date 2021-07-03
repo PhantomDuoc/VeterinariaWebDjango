@@ -6,32 +6,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=yes, maximum-scale=3.0, minimum-scale=1.0">
-    <title>Veterinaria Cola</title>
-    <link rel="shortcut icon" href="{% static 'adopciones/icons/icon.png'%}">
-    <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico'%}" />
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css'%}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css'%}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css'%}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css'%}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css'%}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css'%}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css'%}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/util.css'%}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css'%}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" href="{% static 'adopciones/css/dashboard.css'%}">
+    <title>Dashboard | Veterinaria Cola</title>
     <link rel="stylesheet" href="{% static 'adopciones/css/style.css'%}">
+    <link rel="shortcut icon" href="{% static 'adopciones/icons/icon.png'%}">
+    <link rel="stylesheet" href="{% static 'adopciones/css/dashboard.css'%}">
 </head>
 
 <body>
@@ -97,38 +75,33 @@
         <div class="banner__content">Tus mascotas en las mejores manos</div>
     </section>
 
-    <main>
-        <div class="limiter">
-            <div class="container-login100">
-                <div class="wrap-login100 p-t-85 p-b-20">
-                    <form class="login100-form validate-form">
-                        <span class="login100-form-title p-b-70">
-                            Bienvenido
-                        </span>
-                        <div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate="Ingresar Usuario">
-                            <input class="input100" type="text" name="username">
-                            <span class="focus-input100" data-placeholder="Usuario"></span>
-                        </div>
-
-                        <div class="wrap-input100 validate-input m-b-50" data-validate="Ingresar Contraseña">
-                            <input class="input100" type="password" name="pass">
-                            <span class="focus-input100" data-placeholder="Contraseña"></span>
-                        </div>
-
-                        <div class="container-login100-form-btn">
-                            <button class="login100-form-btn">
-                                Entrar
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+    <section class="container container--flex list">
+        <table border="1" class="list_title">Lista de Mascotas en adopcion
+            <tr class="list_subtitle">
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Raza</th>
+                <th>Modificar</th>
+                <th>Eliminar</th>
+            </tr>
+            {% for tmp in enAdopcion%}
+            <tr class="list_filling">
+                <td>{{tmp.idRescatado}}</td>
+                <td>{{tmp.nombre}}</td>
+                <td>{{tmp.raza}}</td>
+                <td>
+                    <a class="modificar" href="{% url 'form_mod_adopcion' tmp.idRescatado %}"> MODIFICAR </a>
+                </td>
+                <td>
+                    <a class="eliminar" href="{% url 'form_del_adopcion' tmp.idRescatado %}">ELIMINAR</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div>
+            <a class="mas" href="{% url 'form_adopcion' %}">+</a>
         </div>
-
-
-        <div id="dropDownSelect1"></div>
-    </main>
-
+    </section>
 
     <footer class="main-footer">
         <div class="container container--flex">
@@ -155,26 +128,10 @@
                 </p>
             </div>
             <p class="copy">&copy; 2021 Veterinaria Cola | Todos los derechos reservados</p>
-            <a href="{% url 'dashboard' %}" class="dashboard">Dashboard</a>
+            <a href="{% url 'dashboard' %}" id="dashboard">Dashboard</a>
         </div>
     </footer>
     <script src="{% static 'adopciones/js/menu.js'%}"></script>
-    <!--===============================================================================================-->
-    <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js'%}"></script>
-    <!--===============================================================================================-->
-    <script src="{% static 'vendor/animsition/js/animsition.min.js'%}"></script>
-    <!--===============================================================================================-->
-    <script src="{% static 'vendor/bootstrap/js/popper.js'%}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js'%}"></script>
-    <!--===============================================================================================-->
-    <script src="{% static 'vendor/select2/select2.min.js'%}"></script>
-    <!--===============================================================================================-->
-    <script src="{% static 'vendor/daterangepicker/moment.min.js'%}"></script>
-    <script src="{% static 'vendor/daterangepicker/daterangepicker.js'%}"></script>
-    <!--===============================================================================================-->
-    <script src="{% static 'vendor/countdowntime/countdowntime.js'%}"></script>
-    <!--===============================================================================================-->
-    <script src="{% static 'js/main.js'%}"></script>
 </body>
 
 </html>
