@@ -9,13 +9,10 @@ from .serializers import AdopcionSerializer
 
 @csrf_exempt
 @api_view(['GET','POST'])
-
-
-
 def lista_adopciones(request):
     if request.method == 'GET':
-        vehiculo = enAdopcion.objects.all()
-        serializer = AdopcionSerializer(vehiculo, many=True)
+        mascotas = enAdopcion.objects.all()
+        serializer = AdopcionSerializer(mascotas, many=True)
         return Response(serializer.data)
     elif request.method == 'POST':
         data = JSONParser().parse(request)
@@ -29,20 +26,20 @@ def lista_adopciones(request):
 @api_view(['GET','PUT','DELETE'])
 def detalle_adopciones(request,id):
     try:
-        vehiculo = enAdopcion.objects.get(patente=id)
+        mascotas = enAdopcion.objects.get(idRescatado=id)
     except enAdopcion.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     if request.method == 'GET':
-        serializer = AdopcionSerializer(vehiculo)
+        serializer = AdopcionSerializer(mascotas)
         return Response(serializer.data)
     if request.method == 'PUT':
         data = JSONParser().parse(request)
-        serializer = AdopcionSerializer(vehiculo,data=data)
+        serializer = AdopcionSerializer(mascotas,data=data)
         if(serializer.is_valid()):
             serializer.save()
             return Response(serializer.data)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'DELETE':
-        vehiculo.delete()
+        mascotas.delete()
         return Response(status=status.HTTP_204_NOT_CONTENT)
