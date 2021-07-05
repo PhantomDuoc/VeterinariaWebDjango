@@ -27,7 +27,7 @@ def lista_adopciones(request):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET','PUT','DELETE'])
-def detalle_vehiculo(request,id):
+def detalle_adopciones(request,id):
     try:
         vehiculo = enAdopcion.objects.get(patente=id)
     except enAdopcion.DoesNotExist:
