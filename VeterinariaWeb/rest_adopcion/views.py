@@ -25,3 +25,24 @@ def lista_adopciones(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET','PUT','DELETE'])
+def detalle_vehiculo(request,id):
+    try:
+        vehiculo = enAdopcion.objects.get(patente=id)
+    except enAdopcion.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method == 'GET':
+        serializer = AdopcionSerializer(vehiculo)
+        return Response(serializer.data)
+    if request.method == 'PUT':
+        data = JSONParser().parse(request)
+        serializer = AdopcionSerializer(vehiculo,data=data)
+        if(serializer.is_valid()):
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'DELETE':
+        vehiculo.delete()
+        return Response(status=status.HTTP_204_NOT_CONTENT)
