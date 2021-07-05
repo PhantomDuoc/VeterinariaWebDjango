@@ -4,19 +4,19 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
 from django.views.decorators.csrf import csrf_exempt
-from adopciones.models import enAdopcion
-from .serializers import AdopcionSerializer
+from adopciones.models import EstadoAdopcion
+from .serializers import AdopcionSerializer, EstadoSerializer
 
 @csrf_exempt
 @api_view(['GET','POST'])
 def lista_adopciones(request):
     if request.method == 'GET':
-        mascotas = enAdopcion.objects.all()
-        serializer = AdopcionSerializer(mascotas, many=True)
+        estado = EstadoAdopcion.objects.all()
+        serializer = EstadoSerializer(estado, many=True)
         return Response(serializer.data)
     elif request.method == 'POST':
         data = JSONParser().parse(request)
-        serializer = AdopcionSerializer(data=data)
+        serializer = EstadoSerializer(data=data)
         if(serializer.is_valid()):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -26,20 +26,20 @@ def lista_adopciones(request):
 @api_view(['GET','PUT','DELETE'])
 def detalle_adopciones(request,id):
     try:
-        mascotas = enAdopcion.objects.get(idRescatado=id)
-    except enAdopcion.DoesNotExist:
+        estado = EstadoAdopcion.objects.get(estado_id=id)
+    except EstadoAdopcion.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     if request.method == 'GET':
-        serializer = AdopcionSerializer(mascotas)
+        serializer = EstadoSerializer(estado)
         return Response(serializer.data)
     if request.method == 'PUT':
         data = JSONParser().parse(request)
-        serializer = AdopcionSerializer(mascotas,data=data)
+        serializer = EstadoSerializer(estado,data=data)
         if(serializer.is_valid()):
             serializer.save()
             return Response(serializer.data)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'DELETE':
-        mascotas.delete()
+        estado.delete()
         return Response(status=status.HTTP_204_NOT_CONTENT)
