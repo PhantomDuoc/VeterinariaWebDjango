@@ -135,11 +135,45 @@
                 </p>
             </div>
             <p class="copy">&copy; 2021 Veterinaria Cola | Todos los derechos reservados</p>
+            {% if request.user.is_authenticated %}
             <a href="{% url 'dashboard' %}" id="dashboard">Dashboard</a>
-            <a href="">API</a>
+            <a href="{% url 'lista_adopciones' %}" id="dashboard">Api</a>
+            <div><button type="button" id="buscarVehiculos">Buscar</button></div>{% endif %}
         </div>
     </footer>
     <script src="{% static 'adopciones/js/menu.js'%}"></script>
+    <script src="{% static 'adopciones/js/script.js'%}"></script>
+    <script>
+        $(document).ready(function() {
+            $.getJSON('http://127.0.0.1:8000/api/lista_adopciones', function(data) {
+                var estado = data;
+                var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth() + 1; //January is 0!
+                var yyyy = today.getFullYear();
+                if (dd < 10) {
+                    dd = '0' + dd;
+                }
+                if (mm < 10) {
+                    mm = '0' + mm;
+                }
+
+                today = dd + '/' + mm + '/' + yyyy;
+
+                $('#fecha').html(today);
+                $.each(estado, function(i, item) {
+                    $('#estado').append("<tr><td>" + item.estado_id + "</td><td>" +
+                        item.estado + "</td></tr>");
+
+                });
+
+
+            }).fail(function() {
+                console.log('Error al consumir la API!');
+            });
+
+        });
+    </script>
 </body>
 
 </html>

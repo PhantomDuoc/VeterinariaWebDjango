@@ -3,11 +3,11 @@ $(document).ready(function() {
         let errores = '';
 
         //validar nombre
-        if ($('#nombre').val() == '') {
+        if ($('#name').val() == '') {
             errores += '<p>Escriba un nombre</p>'
-            $('#nombre').css("border-bottom-color", "#F14B4B")
+            $('#name').css("border-bottom-color", "#F14B4B")
         } else {
-            $('#nombre').css("border-bottom-color", "#d1d1d1")
+            $('#name').css("border-bottom-color", "#d1d1d1")
         }
 
         //validar correo

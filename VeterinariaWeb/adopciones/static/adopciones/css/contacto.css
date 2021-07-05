@@ -59,14 +59,6 @@
     font-size: 1em;
 }
 
-input:valid {
-    border: 1px solid black;
-}
-
-input:invalid {
-    border: 1px solid red;
-}
-
 @media screen and (min-width:480px) {
     .contact .container--flex {
         align-items: flex-start;
