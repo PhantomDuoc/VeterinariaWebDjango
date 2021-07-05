@@ -485,6 +485,7 @@ h6 {
         object-fit: cover;
     }
     .adopciones__img {
-        height: 300px;
+        height: 500px;
+        object-fit: cover;
     }
 }

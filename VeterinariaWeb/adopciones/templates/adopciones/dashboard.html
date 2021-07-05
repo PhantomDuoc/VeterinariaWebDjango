@@ -9,7 +9,7 @@
     <title>Dashboard | Veterinaria Cola</title>
     <link rel="stylesheet" href="{% static 'adopciones/css/style.css'%}">
     <link rel="shortcut icon" href="{% static 'adopciones/icons/icon.png'%}">
-    <link rel="stylesheet" href="{% static 'adopciones/css/dashboard.css'%}">
+    <link rel="stylesheet" href="{% static 'adopciones/css/adminpanel.css'%}">
 </head>
 
 <body>
@@ -75,33 +75,45 @@
         <div class="banner__content">Tus mascotas en las mejores manos</div>
     </section>
 
-    <section class="container container--flex list">
-        <table border="1" class="list_title">Lista de Mascotas en adopcion
-            <tr class="list_subtitle">
+    <main class="container container--flex main">
+
+        <section class="group group--color">
+            <div class="container">
+                <h2 class="main__title">Listado de mascotas en adopción</h2>
+            </div>
+        </section>
+        <table class="group--color list">
+
+            <section class="group main__about__description">
+                <div class="container container--flex agregar_mascota">
+                    <a class="btn" href="{% url 'form_adopcion' %}">Agregar Mascota</a>
+
+                </div>
+            </section>
+            <tr class="main__title list_subtitle">
                 <th>ID</th>
                 <th>Nombre</th>
                 <th>Raza</th>
                 <th>Modificar</th>
                 <th>Eliminar</th>
             </tr>
+
             {% for tmp in enAdopcion%}
-            <tr class="list_filling">
-                <td>{{tmp.idRescatado}}</td>
-                <td>{{tmp.nombre}}</td>
-                <td>{{tmp.raza}}</td>
-                <td>
-                    <a class="modificar" href="{% url 'form_mod_adopcion' tmp.idRescatado %}"> MODIFICAR </a>
+            <tr>
+                <td class="list_filling">{{tmp.idRescatado}}</td>
+                <td class="list_filling">{{tmp.nombre}}</td>
+                <td class="list_filling">{{tmp.raza}}</td>
+                <td class="list_filling">
+                    <a href="{% url 'form_mod_adopcion' tmp.idRescatado %}"><img class="iconn" src="{% static 'adopciones/icons/edit.png'%}" alt=""></a>
                 </td>
-                <td>
-                    <a class="eliminar" href="{% url 'form_del_adopcion' tmp.idRescatado %}">ELIMINAR</a>
+                <td class="list_filling">
+                    <a href="{% url 'form_del_adopcion' tmp.idRescatado %}"><img class="iconn" src="{% static 'adopciones/icons/delete.png'%}" alt=""></a>
                 </td>
             </tr>
             {% endfor %}
         </table>
-        <div>
-            <a class="mas" href="{% url 'form_adopcion' %}">+</a>
-        </div>
-    </section>
+
+    </main>
 
     <footer class="main-footer">
         <div class="container container--flex">

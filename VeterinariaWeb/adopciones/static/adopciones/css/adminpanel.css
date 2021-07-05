@@ -1,0 +1,23 @@
+.list {
+    text-align: center;
+    width: 100%;
+    background: #de423a;
+    color: white;
+    border-radius: 20px;
+}
+
+.agregar_mascota {
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 100px;
+}
+
+.list_filling {
+    padding: 10px;
+}
+
+.iconn {
+    width: 32px;
+    height: 32px;
+    margin: auto;
+}

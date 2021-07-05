@@ -22,6 +22,7 @@ def contacto(request):
 
 def dashboard(request):
     mascotas = enAdopcion.objects.all()
+    mascotas = enAdopcion.objects.order_by('idRescatado')
     datos = {
         'enAdopcion':mascotas,
         'form':AdopcionForm()

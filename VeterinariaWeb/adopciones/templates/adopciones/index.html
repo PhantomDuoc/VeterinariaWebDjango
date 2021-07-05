@@ -138,33 +138,6 @@
             <a href="{% url 'dashboard' %}" id="dashboard">Dashboard</a>
         </div>
     </footer>
-    <section class="container container--flex">
-        <table border="1">Lista de Mascotas en adopcion
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Raza</th>
-                <th scope="col">Modificar</th>
-                <th scope="col">Eliminar</th>
-            </tr>
-            {% for tmp in enAdopcion%}
-            <tr>
-                <td>{{tmp.idRescatado}}</td>
-                <td>{{tmp.nombre}}</td>
-                <td>{{tmp.raza}}</td>
-                <td>
-                    <a href="{% url 'form_mod_adopcion' tmp.idRescatado %}">MODIFICAR</a>
-                </td>
-                <td>
-                    <a href="{% url 'form_del_adopcion' tmp.idRescatado %}">ELIMINAR</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </table>
-        <div>
-            <a class="mas" href="{% url 'form_adopcion' %}">+</a>
-        </div>
-    </section>
     <script src="{% static 'adopciones/js/menu.js'%}"></script>
 </body>
 
