@@ -70,3 +70,6 @@ def form_del_adopcion(request, id):
     mascota.delete()
 
     return redirect(to='home')
+
+def login_screen(request):
+    return render(request, 'adopciones/login.html')

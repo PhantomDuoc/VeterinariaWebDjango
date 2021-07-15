@@ -6,9 +6,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=yes, maximum-scale=3.0, minimum-scale=1.0">
-    <title>Veterinaria Cola</title>
+    <title>Dashboard | Veterinaria Cola</title>
     <link rel="stylesheet" href="{% static 'adopciones/css/style.css'%}">
     <link rel="shortcut icon" href="{% static 'adopciones/icons/icon.png'%}">
+    <link rel="stylesheet" href="{% static 'adopciones/css/adminpanel.css'%}">
 </head>
 
 <body>
@@ -77,39 +78,43 @@
         <div class="banner__content">Tus mascotas en las mejores manos</div>
     </section>
 
-    <main class="main">
+    <main class="container container--flex main">
+
         <section class="group group--color">
             <div class="container">
-                <h2 class="main__title">Bienvenido a su Veterinaria</h2>
-                <p class="main__txt">Donde los cuidamos como si fueran nuestros</p>
+                <h2 class="main__title">Listado de mascotas en adopción</h2>
             </div>
         </section>
+        <table class="group--color list">
 
-        <section class="group main__about__description">
-            <div class="container container--flex">
-                <div class="column column--50">
-                    <img src="{% static 'adopciones/img/veterinario.jpg'%}" alt="">
-                </div>
-                <div class="column column--50">
-                    <h3 class="column__title">Médico Veterinario</h3>
-                    <p class="column__txt">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat architecto unde dolor eum cumque nobis porro nulla eligendi, laboriosam fugit, aperiam ab. Quos aliquid ex molestias animi. Neque, ullam culpa. </p>
-                    <a href="contacto.html" class="btn btn--contact">Contacto</a>
-                </div>
-            </div>
-        </section>
+            <section class="group main__about__description">
+                <div class="container container--flex agregar_mascota">
+                    <a class="btn" href="{% url 'form_adopcion' %}">Agregar Mascota</a>
 
-        <section class="group adopciones">
-            <h2 class="group__title">Mascotas en Adopción</h2>
-            <div class="container container--flex">
-                {% for tmp in enAdopcion%}
-                <div class="column column--50--25">
-                    <img src="{{ tmp.imagen.url }}/" alt="" class="adopciones__img">
-                    <div class="adopciones__titulo">{{tmp.nombre}}</div>
-                    <div class="adopciones__raza">{{tmp.raza}}</div>
                 </div>
-                {% endfor %}
-            </div>
-        </section>
+            </section>
+            <tr class="main__title list_subtitle">
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Raza</th>
+                <th>Modificar</th>
+                <th>Eliminar</th>
+            </tr>
+
+            {% for tmp in enAdopcion%}
+            <tr>
+                <td class="list_filling">{{tmp.idRescatado}}</td>
+                <td class="list_filling">{{tmp.nombre}}</td>
+                <td class="list_filling">{{tmp.raza}}</td>
+                <td class="list_filling">
+                    <a href="{% url 'form_mod_adopcion' tmp.idRescatado %}"><img class="iconn" src="{% static 'adopciones/icons/edit.png'%}" alt=""></a>
+                </td>
+                <td class="list_filling">
+                    <a href="{% url 'form_del_adopcion' tmp.idRescatado %}"><img class="iconn" src="{% static 'adopciones/icons/delete.png'%}" alt=""></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
 
     </main>
 
@@ -138,45 +143,10 @@
                 </p>
             </div>
             <p class="copy">&copy; 2021 Veterinaria Cola | Todos los derechos reservados</p>
-            {% if request.user.is_authenticated %}
             <a href="{% url 'dashboard' %}" id="dashboard">Dashboard</a>
-            <a href="{% url 'lista_adopciones' %}" id="dashboard">Api</a>
-            <div><button type="button" id="buscarVehiculos">Buscar</button></div>{% endif %}
         </div>
     </footer>
     <script src="{% static 'adopciones/js/menu.js'%}"></script>
-    <script src="{% static 'adopciones/js/script.js'%}"></script>
-    <script>
-        $(document).ready(function() {
-            $.getJSON('http://127.0.0.1:8000/api/lista_adopciones', function(data) {
-                var estado = data;
-                var today = new Date();
-                var dd = today.getDate();
-                var mm = today.getMonth() + 1; //January is 0!
-                var yyyy = today.getFullYear();
-                if (dd < 10) {
-                    dd = '0' + dd;
-                }
-                if (mm < 10) {
-                    mm = '0' + mm;
-                }
-
-                today = dd + '/' + mm + '/' + yyyy;
-
-                $('#fecha').html(today);
-                $.each(estado, function(i, item) {
-                    $('#estado').append("<tr><td>" + item.estado_id + "</td><td>" +
-                        item.estado + "</td></tr>");
-
-                });
-
-
-            }).fail(function() {
-                console.log('Error al consumir la API!');
-            });
-
-        });
-    </script>
 </body>
 
 </html>
