@@ -6,10 +6,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=yes, maximum-scale=3.0, minimum-scale=1.0">
-    <title>Dashboard | Veterinaria Cola</title>
+    <title>Login Screen | Veterinaria Cola</title>
     <link rel="stylesheet" href="{% static 'adopciones/css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'adopciones/css/contacto.css'%}">
     <link rel="shortcut icon" href="{% static 'adopciones/icons/icon.png'%}">
-    <link rel="stylesheet" href="{% static 'adopciones/css/adminpanel.css'%}">
 </head>
 
 <body>
@@ -38,7 +38,7 @@
             </span>
             <ul class="menu" id="menu">
                 <li class="menu__item">
-                    <a href="/" class="menu__link menu__link--select">Inicio</a>
+                    <a href="/" class="menu__link ">Inicio</a>
                 </li>
                 <li class="menu__item">
                     <a href="{% url 'adopciones'%}" class="menu__link">Adopciones</a>
@@ -50,7 +50,11 @@
                     <a href="{% url 'contacto'%}" class="menu__link">Contacto</a>
                 </li>
                 <li class="menu__item">
-                    <a href="{% url 'login_screen'%}" class="menu__link">Login</a>
+                    <a href="{% url 'login_screen'%}" class="menu__link menu__link--select">Login</a>
+                </li>
+                <li class="menu__item">
+                    {% if request.user.is_authenticated %}
+                    <a href="{% url 'dashboard' %}" class="menu__link">Dashboard</a> {% endif %}
                 </li>
             </ul>
             <div class="social-icon">
@@ -77,46 +81,28 @@
         <img src="{% static 'adopciones/img/banner.jpg'%}" alt="" class="banner__img">
         <div class="banner__content">Tus mascotas en las mejores manos</div>
     </section>
-
-    <main class="container container--flex main">
-
-        <section class="group group--color">
-            <div class="container">
-                <h2 class="main__title">Listado de mascotas en adopción</h2>
+    <main class="main container">
+        <section class="group contact">
+            <h2 class="group__title">Bienvenido</h2>
+            <div class="formulario">
+                <form action="enviar.php" method="POST" name="formulario" id="formulario">
+                    <p>
+                        <label for="name" class="formulario__label">Usuario</label>
+                        <input type="text" id="name" name="name" class="formulario__input-txt">
+                    </p>
+                    <p>
+                        <label for="email" class="formulario__label">Contraseña</label>
+                        <input type="email" id="email" name="email" class="formulario__input-txt">
+                    </p>
+                    <p>
+                        <input type="submit" class="btn formulario__btn" value="Iniciar Sesión" onclick="enviar_datos_ajax();" id="btnSend">
+                    </p>
+            </div>
+            </form>
             </div>
         </section>
-        <table class="group--color list">
-
-            <section class="group main__about__description">
-                <div class="container container--flex agregar_mascota">
-                    <a class="btn" href="{% url 'form_adopcion' %}">Agregar Mascota</a>
-
-                </div>
-            </section>
-            <tr class="main__title list_subtitle">
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Raza</th>
-                <th>Modificar</th>
-                <th>Eliminar</th>
-            </tr>
-
-            {% for tmp in enAdopcion%}
-            <tr>
-                <td class="list_filling">{{tmp.idRescatado}}</td>
-                <td class="list_filling">{{tmp.nombre}}</td>
-                <td class="list_filling">{{tmp.raza}}</td>
-                <td class="list_filling">
-                    <a href="{% url 'form_mod_adopcion' tmp.idRescatado %}"><img class="iconn" src="{% static 'adopciones/icons/edit.png'%}" alt=""></a>
-                </td>
-                <td class="list_filling">
-                    <a href="{% url 'form_del_adopcion' tmp.idRescatado %}"><img class="iconn" src="{% static 'adopciones/icons/delete.png'%}" alt=""></a>
-                </td>
-            </tr>
-            {% endfor %}
-        </table>
-
     </main>
+
 
     <footer class="main-footer">
         <div class="container container--flex">
@@ -143,10 +129,46 @@
                 </p>
             </div>
             <p class="copy">&copy; 2021 Veterinaria Cola | Todos los derechos reservados</p>
-            <a href="{% url 'dashboard' %}" id="dashboard">Dashboard</a>
         </div>
     </footer>
     <script src="{% static 'adopciones/js/menu.js'%}"></script>
+    <script src="{% static 'adopciones/js/script.js'%}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="{% static 'adopciones/js/formulario.js'%}"></script>
+    <script>
+        $(document).ready(function() {
+            $.getJSON('http://127.0.0.1:8000/api/lista_adopciones', function(data) {
+                var estado = data;
+                var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth() + 1; //January is 0!
+                var yyyy = today.getFullYear();
+                if (dd < 10) {
+                    dd = '0' + dd;
+                }
+                if (mm < 10) {
+                    mm = '0' + mm;
+                }
+
+                today = dd + '/' + mm + '/' + yyyy;
+
+                $('#fecha').html(today);
+                $.each(estado, function(i, item) {
+                    $('#estado').append("<tr><td>" + item.estado_id + "</td><td>" +
+                        item.estado + "</td></tr>");
+
+                });
+
+
+            }).fail(function() {
+                console.log('Error al consumir la API!');
+            });
+
+        });
+    </script>
 </body>
 
 </html>

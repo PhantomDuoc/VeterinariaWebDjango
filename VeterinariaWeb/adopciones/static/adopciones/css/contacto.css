@@ -30,8 +30,11 @@
 }
 
 .formulario {
-    padding: 10px;
-    padding-top: 0;
+    width: 40%;
+    margin: auto;
+    justify-content: center;
+    margin-left: 700px;
+    margin-right: 700px;
 }
 
 .formulario__label,
