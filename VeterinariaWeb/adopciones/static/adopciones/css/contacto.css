@@ -30,11 +30,11 @@
 }
 
 .formulario {
-    width: 40%;
+    width: 100px;
     margin: auto;
     justify-content: center;
-    margin-left: 700px;
-    margin-right: 700px;
+    margin-left: 400px;
+    margin-right: 400px;
 }
 
 .formulario__label,

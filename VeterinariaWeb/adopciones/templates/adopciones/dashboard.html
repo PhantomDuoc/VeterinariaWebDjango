@@ -151,6 +151,19 @@
         </div>
     </footer>
     <script src="{% static 'adopciones/js/menu.js'%}"></script>
+    <script>
+        $(document).ready(function() {
+            $.getJSON('http://127.0.0.1:8000/api/lista_adopciones', function(data) {
+                var estados = data;
+                $.each(estados, function(i, item) {
+                    $('#estados').append("<tr><td>" + item.estado_id + "</td><td>" +
+                        item.estado + "</td><td>");
+                });
+            }).fail(function() {
+                console.log('Error al consumir la API!');
+            });
+        });
+    </script>
 </body>
 
 </html>
